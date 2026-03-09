@@ -33,7 +33,7 @@ class Visualiser:
         self.start_key = (grid.start.row, grid.start.col)
         self.goal_key  = (grid.goal.row,  grid.goal.col)
         self._generator = self._animation = None
-        self._visited, self._frontier, self._path = set(), set(), []
+        self._visited, self._queue_set, self._path = set(), set(), []
         self._search_done = False
         #parent map for path reconstruction, children map for layout
         self._tree_parent   = {}
@@ -72,7 +72,7 @@ class Visualiser:
             return "red"
         if cell_pos in path_set:
             return "orange"
-        if cell_pos in self._frontier:
+        if cell_pos in self._queue_set:
             return "yellow"
         if cell_pos in self._visited:
             return "lightblue"
