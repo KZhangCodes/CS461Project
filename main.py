@@ -1,24 +1,13 @@
 from grid import Grid
-from gui import draw_grid
 from agent import Agent
+from gui import Visualiser
 
 def main():
-
-    size = input("Grid size N: ")
-
-    if size == "":
-        size = 10
-    else:
-        size = int(size)
+    size = int(input("Grid size N: ") or 10)
 
     grid = Grid(size=size)
     agent = Agent(grid)
-    search = agent.search()
-
-    print("Agent start:", search["current"])
-    print("Neighbors:", search["neighbors"])
-
-    draw_grid(grid)
+    Visualiser(grid, agent).run()
 
 if __name__ == "__main__":
     main()
