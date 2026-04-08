@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="frontier node animation fix">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adjacencies.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/city_graph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coordinates.csv" afterDir="false" />
+    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="load and represent city graph from files, no search and no visualization yet">
+      <change afterPath="$PROJECT_DIR$/city_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773032037386</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="load and represent city graph from files, no search and no visualization yet">
+      <option name="closed" value="true" />
+      <created>1775620297161</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775620297161</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -180,6 +184,7 @@
     <MESSAGE value="phase 2 agent, no search method implementation yet" />
     <MESSAGE value="phase 3 implementation, removed numpy library, refactored for low coupling high cohesion, needs modularity refactoring" />
     <MESSAGE value="frontier node animation fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="frontier node animation fix" />
+    <MESSAGE value="load and represent city graph from files, no search and no visualization yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="load and represent city graph from files, no search and no visualization yet" />
   </component>
 </project>
