@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="implemented dfs, bfs, iddfs with depth limited, best search and astar on city graph, testing with terminal, no visualization or gui">
-      <change afterPath="$PROJECT_DIR$/city_gui.py" afterDir="false" />
+    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="visualization implementation, animate city graph search step by step similar to gui.py for city nodes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/city_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/city_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/city_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/city_gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775624889204</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="visualization implementation, animate city graph search step by step similar to gui.py for city nodes">
+      <option name="closed" value="true" />
+      <created>1775672652637</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1775672652637</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -196,6 +205,7 @@
     <MESSAGE value="frontier node animation fix" />
     <MESSAGE value="load and represent city graph from files, no search and no visualization yet" />
     <MESSAGE value="implemented dfs, bfs, iddfs with depth limited, best search and astar on city graph, testing with terminal, no visualization or gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented dfs, bfs, iddfs with depth limited, best search and astar on city graph, testing with terminal, no visualization or gui" />
+    <MESSAGE value="visualization implementation, animate city graph search step by step similar to gui.py for city nodes" />
+    <option name="LAST_COMMIT_MESSAGE" value="visualization implementation, animate city graph search step by step similar to gui.py for city nodes" />
   </component>
 </project>

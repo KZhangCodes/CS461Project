@@ -13,7 +13,7 @@ def launch() -> None:
     ax.text(0.5, 0.58, "Select mode", ha="center", va="center", fontsize=10, transform=ax.transAxes)
 
     #grid button
-    ax_grid  = fig.add_axes([0.15, 0.25, 0.3, 0.15])
+    ax_grid = fig.add_axes([0.15, 0.25, 0.3, 0.15])
     btn_grid = Button(ax_grid, "Grid")
 
     def open_grid(event) -> None:
@@ -21,7 +21,7 @@ def launch() -> None:
     btn_grid.on_clicked(open_grid)
 
     #city graph button
-    ax_city  = fig.add_axes([0.55, 0.25, 0.3, 0.15])
+    ax_city = fig.add_axes([0.55, 0.25, 0.3, 0.15])
     btn_city = Button(ax_city, "City graph")
 
     def open_city(event) -> None:

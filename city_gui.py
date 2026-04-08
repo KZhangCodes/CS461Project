@@ -175,6 +175,21 @@ class CityVisualiser:
         ax.legend(handles=legend_items, loc="upper left", fontsize=8)
         ax.text(0.01, 0.01, f"Algorithm: {self.algorithm.upper()}", transform=ax.transAxes, fontsize=9, va="bottom")
 
+    #summary panel as dialogue box
+    def _draw_summary_panel(self, depth: int, states_explored: int, elapsed_ms: float, peak_kb: float, total_cost: float | None, heuristic_stats: dict | None) -> None:
+        lines = [f"Time: {elapsed_ms:.1f} ms", f"Memory: {peak_kb:.0f} kb", f"Expanded: {states_explored}", f"Depth: {depth}",]
+
+        if total_cost is not None:
+            lines.append(f"Cost: {total_cost:.2f}")
+        if heuristic_stats:
+            lines += [f"heuristic goal: {heuristic_stats['at_goal']:.2f}", f"heuristic max: {heuristic_stats['max']:.2f}", f"heuristic avg: {heuristic_stats['avg']:.2f}",]
+
+        fig_dialog, ax_dialog = plt.subplots(figsize=(3.2, len(lines) * 0.4 + 0.4))
+        fig_dialog.canvas.manager.set_window_title("Summary")
+        ax_dialog.axis("off")
+        ax_dialog.text(0.05, 0.95, "\n".join(lines), va="top", fontsize=9, fontfamily="monospace", transform=ax_dialog.transAxes)
+        fig_dialog.show()
+
     #map draw and clear
     def _draw_map(self) -> None:
         ax = self.ax_map
@@ -208,13 +223,19 @@ class CityVisualiser:
             self._queue_set = set(frontier_cities) #update frontier
 
         elif event[0] == "done":
-            path, states_explored = event[1], event[2]
+            path, states_explored, elapsed_ms, peak_kb, heuristic_stats = (event[1], event[2], event[3], event[4], event[5])
             self._path = path or []
             self._queue_set.clear()
             self._search_done = True
             self._animation.event_source.stop()
-            self._update_status(f"Path length: {len(path) - 1}  |  States explored: {states_explored}" if path else f"No path found.  States explored: {states_explored}")
 
+            if path:
+                depth = len(path) - 1
+                total_cost = heuristic_stats.get("total_cost") if heuristic_stats else None
+                self._update_status(f"Path length: {depth}  |  States explored: {states_explored}  |  "f"Time: {elapsed_ms:.1f} ms  |  Memory: {peak_kb:.0f} KB")
+                self._draw_summary_panel(depth, states_explored, elapsed_ms, peak_kb, total_cost, heuristic_stats)
+            else:
+                self._update_status(f"No path found.  States explored: {states_explored}  |  Time: {elapsed_ms:.1f} ms")
         self._draw_map()
 
     def run(self) -> None:
