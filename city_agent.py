@@ -167,7 +167,7 @@ class CityAgent:
         elapsed = 0.0
         visited = {self.start}
         parent: dict[str, str | None] = {self.start: None}
-        heap = [(self._heuristic(self.start), self.start)]
+        heap = [(self._chebyshev(self.start), self.start)]
         states_explored = 0
         heuristic_values: list[float] = [] #collects heuristic value popped
         nodes_generated = 1
@@ -190,7 +190,7 @@ class CityAgent:
                 if neighbor not in visited:
                     visited.add(neighbor)
                     parent[neighbor] = current
-                    heapq.heappush(heap, (self._heuristic(neighbor), neighbor))
+                    heapq.heappush(heap, (self._chebyshev(neighbor), neighbor))
                     nodes_generated += 1
 
             elapsed += (time.perf_counter() - t0)
@@ -205,7 +205,7 @@ class CityAgent:
         elapsed = 0.0
         parent: dict[str, str | None] = {self.start: None}
         g_cost = {self.start: 0.0} #actual cost
-        heap = [(self._heuristic(self.start), self.start)]
+        heap = [(self._euclidean(self.start), self.start)]
         visited: set[str] = set()
         states_explored = 0
         heuristic_values: list[float] = [] #collects heuristic value expanded
@@ -220,7 +220,7 @@ class CityAgent:
                 yield "step", current, [city for _priority, city in heap]
                 continue
             visited.add(current)
-            h = self._heuristic(current)
+            h = self._euclidean(current)
             heuristic_values.append(h)
             states_explored += 1
 
@@ -237,7 +237,7 @@ class CityAgent:
                 if neighbor not in g_cost or new_g < g_cost[neighbor]:
                     g_cost[neighbor] = new_g #update if cheaper path found
                     parent[neighbor] = current
-                    heapq.heappush(heap, (new_g + self._heuristic(neighbor), neighbor))
+                    heapq.heappush(heap, (new_g + self._euclidean(neighbor), neighbor))
                     if neighbor not in generated_set:
                         generated_set.add(neighbor)
                         nodes_generated += 1
@@ -248,9 +248,17 @@ class CityAgent:
         tracemalloc.stop()
         yield "done", None, states_explored, elapsed * 1000, peak_bytes / 1024, None, nodes_generated
 
-    #straight line distance using coords, used as heuristic because straight line doesnt overestimate
-    def _heuristic(self, city: str) -> float:
+    #euclidean heuristic for astar
+    def _euclidean(self, city: str) -> float:
         return self.graph.distance(city, self.goal)
+
+    #chebyshev distance heuristic for best_first
+    #reference: https://www.geeksforgeeks.org/machine-learning/chebyshev-distance/
+    def _chebyshev(self, city: str) -> float:
+        latitude1, longitude1 = self.graph.positions[city]
+        latitude2, longitude2 = self.graph.positions[self.goal]
+        return max(abs(latitude1 - latitude2), abs(longitude1 - longitude2))
+
 
 
 
