@@ -2,9 +2,6 @@ from collections import deque
 import heapq
 import time
 import tracemalloc
-import sys
-
-sys.setrecursionlimit(10000)
 
 type SearchEvent = tuple[str, str, list[str]] | tuple[str, list[str] | None, int]
 
