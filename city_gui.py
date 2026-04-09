@@ -193,7 +193,7 @@ class CityVisualiser(QMainWindow):
         self.map.draw_idle()
 
     #handles done event from generator, stores the path and shows summary
-    def _on_search_done(self, path, states_explored, elapsed_ms, peak_kb, heuristic_stats) -> None:
+    def _on_search_done(self, path, states_explored, elapsed_ms, peak_kb, heuristic_stats, nodes_generated) -> None:
         self._path = path or []
         self._queue_set.clear()
         self._search_done = True

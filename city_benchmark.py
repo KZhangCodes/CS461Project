@@ -21,11 +21,9 @@ def _run_once(graph: CityGraph, algorithm: str, start: str, goal: str) -> dict |
             branch_counts.append(len(graph.neighbors(current)))
             peak_frontier = max(peak_frontier, len(frontier))
         elif event[0] == "done":
-            path, nodes_expanded, elapsed_ms, peak_kb, heuristic_stats = event[1:]
+            path, nodes_expanded, elapsed_ms, peak_kb, heuristic_stats, nodes_generated = event[1:]
             if path is None:
                 return None
-            #count unvisited neighbors at completion for nodes generated
-            nodes_generated = sum(len([n for n in graph.neighbors(city) if n not in visited]) for city in visited)
             return {"path_length": len(path) - 1, "path_cost": heuristic_stats.get("total_cost") if heuristic_stats else None, "nodes_expanded": nodes_expanded,
                 "nodes_generated": nodes_generated, "branch_avg": statistics.mean(branch_counts) if branch_counts else 0.0, "branch_max": max(branch_counts) if branch_counts else 0,
                 "peak_frontier": peak_frontier, "peak_footprint": peak_frontier + len(visited), "elapsed_ms": elapsed_ms, "peak_kb": peak_kb,}
