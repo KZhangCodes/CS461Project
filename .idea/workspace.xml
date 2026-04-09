@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="timemalloc and summary panel with metrics (time, mem, nodes expanded, path length, solution depth, heuristic stats)">
-      <change afterPath="$PROJECT_DIR$/city_benchmark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/city_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/city_gui.py" afterDir="false" />
+    <list default="true" id="715b6ff4-c06c-40fc-9e35-a0d9de5bb9a9" name="Changes" comment="metrics summary with benchmark harness, redesigned UI to use PyQT5 alongside matplotlib for visualization. astar used as optimal benchmark baseline for now, refactoring needed">
+      <change beforePath="$PROJECT_DIR$/city_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/city_benchmark.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775676557071</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="metrics summary with benchmark harness, redesigned UI to use PyQT5 alongside matplotlib for visualization. astar used as optimal benchmark baseline for now, refactoring needed">
+      <option name="closed" value="true" />
+      <created>1775698225479</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775698225479</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -214,6 +220,7 @@
     <MESSAGE value="implemented dfs, bfs, iddfs with depth limited, best search and astar on city graph, testing with terminal, no visualization or gui" />
     <MESSAGE value="visualization implementation, animate city graph search step by step similar to gui.py for city nodes" />
     <MESSAGE value="timemalloc and summary panel with metrics (time, mem, nodes expanded, path length, solution depth, heuristic stats)" />
-    <option name="LAST_COMMIT_MESSAGE" value="timemalloc and summary panel with metrics (time, mem, nodes expanded, path length, solution depth, heuristic stats)" />
+    <MESSAGE value="metrics summary with benchmark harness, redesigned UI to use PyQT5 alongside matplotlib for visualization. astar used as optimal benchmark baseline for now, refactoring needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="metrics summary with benchmark harness, redesigned UI to use PyQT5 alongside matplotlib for visualization. astar used as optimal benchmark baseline for now, refactoring needed" />
   </component>
 </project>

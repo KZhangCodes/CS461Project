@@ -51,16 +51,15 @@ def run_benchmark(graph: CityGraph, start: str, goal: str, algorithms: list[str]
         if not completed_runs:
             results[algorithm] = None
             continue
-        algorithm_summary = _summarize(completed_runs)
-        algorithm_summary["optimal"] = algorithm == "astar" #astar is optimal baseline
-        results[algorithm] = algorithm_summary
+        results[algorithm] = _summarize(completed_runs)
 
-    #compare all algorithm to astar path length for optimality
-    if "astar" in results and results["astar"] is not None:
-        optimal_length = results["astar"]["path_length"]
+    #find shortest path length for algorithms that found a path
+    successful_results = [s for s in results.values() if s is not None]
+    if successful_results:
+        min_path_length = min(s["path_length"] for s in successful_results)
         for algorithm_summary in results.values():
             if algorithm_summary is not None:
-                algorithm_summary["matches_optimal"] = algorithm_summary["path_length"] == optimal_length
+                algorithm_summary["matches_optimal"] = algorithm_summary["path_length"] == min_path_length
     return results
 
 #runs the benchmark and displays results with table/charts
@@ -90,7 +89,7 @@ def _draw_table(ax, results: dict, repeats: int) -> None:
     rows = []
     for algorithm, summary in results.items():
         cost_str = f"{summary['path_cost']:.2f}" if summary["path_cost"] is not None else "N/A"
-        optimal_str = "baseline" if summary["optimal"] else ("yes" if summary.get("matches_optimal") else "no")
+        optimal_str = "yes" if summary.get("matches_optimal") else "no"
         rows.append([algorithm.upper(), f"{summary['elapsed_ms_mean']:.3f} {summary['elapsed_ms_std']:.3f}", f"{summary['peak_kb_mean']:.0f} {summary['peak_kb_std']:.0f}",
             f"{summary['nodes_expanded_mean']:.1f}", f"{summary['nodes_generated_mean']:.1f}", f"{summary['branch_avg_mean']:.2f}", f"{summary['branch_max_mean']:.1f}",
             f"{summary['peak_frontier_mean']:.1f}", f"{summary['peak_footprint_mean']:.1f}", str(summary["path_length"]), cost_str, optimal_str,])
